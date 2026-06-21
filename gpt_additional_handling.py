@@ -1,8 +1,11 @@
 def preprocess_prompt(prompt, personality):
     """
-    Preprocesses the prompt with the custom personality.
+    Preprocesses the prompt and personality into the Chat Completions message format.
     """
-    return f"{personality}\n{prompt}"
+    return [
+        {"role": "system", "content": personality},
+        {"role": "user", "content": prompt}
+    ]
 
 def postprocess_response(response):
     """
